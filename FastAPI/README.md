@@ -44,3 +44,28 @@ In summary, WSGI is the traditional way of running Python web applications, whil
 ## adds data validation, parsing and serialization options
 
 ## similiar to dataGlass
+
+# Uvicorn,
+
+pronounced “you-vee-corn”, stands for “Unicorn serving ASGI”, and it's an application server used to serve Python web applications that adhere to the ASGI specification. It's lightweight, concurrent, and designed to serve fast web applications in the modern age
+
+## `uvicorn main:app --reload`
+
+is a command used to run a Uvicorn server with automatic reloading.
+
+Let's break it down:
+
+1. uvicorn: This is the command to run the Uvicorn server.
+2. main:app: This specifies the application module and instance to run. In this case, it's looking for a file main and an instance named app inside it.
+3. --reload: This flag enables automatic reloading of the application when changes are detected in the code. Uvicorn will automatically restart the server when it detects changes, making it ideal for development environments.
+
+When you run this command, Uvicorn will:
+
+1. Start the server with the application instance specified in (link unavailable).
+2. Monitor the file system for changes to the application code.
+3. Automatically restart the server when changes are detected, applying the updates.
+
+This command is particularly useful during development, as it allows you to see the effects of your code changes without manually restarting the server each time.
+Note: Make sure your (link unavailable) file has an ASGI-compatible application instance defined, like app = FastAPI() or app = Starlette(), for Uvicorn to work correctly.
+
+#########################################33

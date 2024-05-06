@@ -39,4 +39,8 @@ In summary, WSGI is the traditional way of running Python web applications, whil
 
 # PyDantic:
 
-To make sure data is valid and follows certain rules.
+## To make sure data is valid and follows certain rules.
+
+## adds data validation, parsing and serialization options
+
+## similiar to dataGlass

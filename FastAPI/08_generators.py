@@ -12,3 +12,19 @@ the code inside the generator or iterator is not executed until you start iterat
 This allows for efficient handling of large datasets, as the code is only executed when needed.
     
 """
+
+
+def mygenerator(n):
+    for x in range(n):
+        yield x**3  # will give next value everytime
+
+
+values = mygenerator(100)  # returns iter
+print(list(values))
+
+# print(next(values))
+# print(next(values))
+# print(next(values))
+# print(next(values))
+# for x in values:
+#     print(x)

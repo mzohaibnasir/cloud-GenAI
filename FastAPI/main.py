@@ -6,8 +6,13 @@ fastapp = FastAPI()
 
 
 @fastapp.get("/")
-async def index():
+async def index() -> dict[str, str]:
     return {"hello": "world"}
+
+
+@fastapp.get("/about")
+async def about():
+    return {"An exceptional Company"}
 
 
 """
@@ -22,7 +27,9 @@ It is equivalent to:
 """
 
 
-# if __name__ == "__main__":
-#     uvicorn.run("main:fastApp", host="127.0.0.1", port=5000, log_level="info")
+if __name__ == "__main__":
+    uvicorn.run(
+        "main:fastapp", host="127.0.0.1", port=5000, log_level="info", reload=True
+    )
 
 """ or uvicorn main:app --reload"""

@@ -34,3 +34,9 @@ WSGI: WSGI has been around for longer and is widely supported by most web server
 ASGI: ASGI is a newer specification. You might need to use specific web servers like Daphne or uvicorn for ASGI applications.
 
 In summary, WSGI is the traditional way of running Python web applications, while ASGI offers a more performant approach for modern web development needs. The choice between them depends on the complexity and requirements of your application.
+
+#####################################
+
+# PyDantic:
+
+To make sure data is valid and follows certain rules.

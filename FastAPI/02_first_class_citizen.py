@@ -70,6 +70,6 @@ def html_tag(tag):
     return wrap_text
 
 
-print_h1 = html_tag("h1")
-print_h1("Hello")
-print_h1("Again")
+print_h1 = html_tag(tag="h1")  # first outer parameter
+print_h1(msg="Hello")  # then inner parameter
+print_h1(msg="Again")

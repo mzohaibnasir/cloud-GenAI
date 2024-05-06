@@ -3,13 +3,13 @@
 is a modern high performance, web framework for building APIs with python. It uses ASGI(Asychronous Server Gateway Interface)
 whereas Flask/Django uses WSGI(Web server Gateway Interface).
 
-# ASGI is intended to provide a standard interface between asyc-capable python web servers, frameworks and applications.
+### ASGI is intended to provide a standard interface between asyc-capable python web servers, frameworks and applications.
 
 1.  WSGI provided a standard for synchronous pytohn apps, ASGI provides one for both asynchronous and synchronous apps with a WSGI backwards-capability implementation and multiple servers and application frameworks. WSGi is used by Flask and Django
 
 2.  WSGI - sychronous; ASGI - asynchronous
 
-## Pydantic is the most widely used data validation library for Python.
+### Pydantic is the most widely used data validation library for Python.
 
 ############################################
 

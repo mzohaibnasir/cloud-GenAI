@@ -20,11 +20,34 @@ def mygenerator(n):
 
 
 values = mygenerator(100)  # returns iter
-print(list(values))
+# print(list(values))
 
-# print(next(values))
-# print(next(values))
-# print(next(values))
-# print(next(values))
+print(next(values))
+print(next(values))
+print(next(values))
+print(next(values))
 # for x in values:
 #     print(x)
+
+
+def indefinite_seq():
+    result = 1
+    while True:
+        yield result  # just yiels next very everytime
+        result *= 5
+
+
+val = indefinite_seq()
+# print(list(val))
+
+print(next(val))
+print(next(val))
+print(next(val))
+print(next(val))
+print(next(val))
+print(next(val))
+print(next(val))
+print(next(val))
+print(next(val))
+print(next(val))
+print(next(val))

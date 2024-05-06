@@ -5,9 +5,9 @@ whereas Flask/Django uses WSGI(Web server Gateway Interface).
 
 # ASGI is intended to provide a standard interface between asyc-capable python web servers, frameworks and applications.
 
-# WSGI provided a standard for synchronous pytohn apps, ASGI provides one for both asynchronous and synchronous apps with a WSGI backwards-capability implementation and multiple servers and application frameworks. WSGi is used by Flask and Django
+1.  WSGI provided a standard for synchronous pytohn apps, ASGI provides one for both asynchronous and synchronous apps with a WSGI backwards-capability implementation and multiple servers and application frameworks. WSGi is used by Flask and Django
 
-# WSGI - sychronous; ASGI - asynchronous
+2.  WSGI - sychronous; ASGI - asynchronous
 
 ############################################
 

@@ -6,13 +6,13 @@ fastapp = FastAPI()
 
 
 @fastapp.get("/")
-async def index() -> dict[str, str]:
-    return {"hello": "world"}
+async def index() -> dict[str, int]:
+    return {"hello": 786}
 
 
 @fastapp.get("/about")
-async def about():
-    return {"An exceptional Company"}
+async def about() -> str:
+    return "An exceptional Company"
 
 
 """

@@ -9,6 +9,8 @@ whereas Flask/Django uses WSGI(Web server Gateway Interface).
 
 2.  WSGI - sychronous; ASGI - asynchronous
 
+## Pydantic is the most widely used data validation library for Python.
+
 ############################################
 
 SGI and ASGI are both interfaces that act as middlemen between web servers and Python web applications. They define how data is exchanged between these two components. Here's a breakdown of their key differences:

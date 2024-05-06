@@ -69,3 +69,5 @@ This command is particularly useful during development, as it allows you to see 
 Note: Make sure your (link unavailable) file has an ASGI-compatible application instance defined, like app = FastAPI() or app = Starlette(), for Uvicorn to work correctly.
 
 #########################################33
+
+# Asynchronous programming enables concurrency,

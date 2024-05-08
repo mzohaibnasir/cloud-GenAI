@@ -3,6 +3,7 @@
 #
 from enum import Enum
 from pydantic import BaseModel
+from datetime import date
 
 
 class GenreURLChoices(Enum):
@@ -11,8 +12,15 @@ class GenreURLChoices(Enum):
     Z = "z"
 
 
+# some bands ma y have none, or mu;ltiple albums
+class Album(BaseModel):
+    title: str
+    release_date: date
+
+
 class BandDataClass(BaseModel):
     # { 'id':1. 'name':'the band', 'genre': 'rock}
     id: int
     name: str
     genre: str
+    albums: list[Album] = []  # name: annotation type = default_value

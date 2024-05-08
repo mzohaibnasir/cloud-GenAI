@@ -19,6 +19,12 @@ BANDS = [
     {"id": 2, "name": "B", "genre": "Y"},
     {"id": 3, "name": "C", "genre": "Z"},
     {"id": 3, "name": "S", "genre": "Z"},
+    {
+        "id": 4,
+        "name": "Abc",
+        "genre": "XYZ",
+        "albums": [{"title": "Title", "release_date": "1971-07-21"}],
+    },
 ]
 
 
@@ -88,9 +94,14 @@ async def band(band_id: int) -> BandDataClass:
 #     return [b for b in BANDS if b["genre"].lower() == genre.lower()]
 
 
+# @fastapp.get("/bands/genre/{genre}")
+# async def bands_for_genre(genre: GenreURLChoices) -> list[dict]:
+#     return [b for b in BANDS if b["genre"].lower() == genre.value]
+
+
 @fastapp.get("/bands/genre/{genre}")
-async def bands_for_genre(genre: GenreURLChoices) -> list[dict]:
-    return [b for b in BANDS if b["genre"].lower() == genre.value]
+async def bands_for_genre(genre: GenreURLChoices) -> list[BandDataClass]:
+    return [BandDataClass(**b) for b in BANDS if b["genre"].lower() == genre.value]
 
 
 # GenreURLChoices will return more descriptive error

@@ -37,12 +37,6 @@ In summary, WSGI is the traditional way of running Python web applications, whil
 
 #####################################
 
-# PyDantic:
-
-## To make sure data is valid and follows certain rules.
-
-## adds data validation, parsing and serialization options
-
 ## similiar to dataGlass
 
 # Uvicorn,
@@ -68,11 +62,15 @@ When you run this command, Uvicorn will:
 This command is particularly useful during development, as it allows you to see the effects of your code changes without manually restarting the server each time.
 Note: Make sure your (link unavailable) file has an ASGI-compatible application instance defined, like app = FastAPI() or app = Starlette(), for Uvicorn to work correctly.
 
-#########################################33
+#########################################
 
 # Asynchronous programming enables concurrency,
 
-# pydantic for data validation
+####################################################
+
+# PyDantic: To make sure data is valid and follows certain rules.
+
+It adds data validation, parsing and serialization options
 
 Pydantic allows us to create classes that inherit from BaseModels.
 These classes contain fields that define the structure of piece of data

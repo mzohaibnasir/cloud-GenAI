@@ -34,14 +34,17 @@ async def bands() -> list[dict]:
 async def band(band_id: int) -> dict:
     band = next((b for b in BANDS if b["id"] == band_id), None)
     """
+    
+    
     x = (i for i in BANDS if i["id"] == 2)  # round brackets for generator
     # list(x)
     print(next(x))
     print(next(x))
-
     print(next(x, "xxx"))
-
+    
+    
     """
+
     if band is None:
         # status code 404
         raise HTTPException(status_code=404, detail="Band not found!")

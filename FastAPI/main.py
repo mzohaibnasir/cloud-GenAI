@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 import uvicorn
 
@@ -19,7 +19,36 @@ async def index() -> dict[str, int]:
 
 @fastapp.get("/about")
 async def about() -> str:
-    return "An exceptional Company"
+    return "An exceptional Company."
+
+
+###############################3 TWO ENDPOINTS
+# to return list of data
+@fastapp.get("/bands")
+async def bands() -> list[dict]:
+    return BANDS
+
+
+# to return band by id
+@fastapp.get("/bands/{band_id}")
+async def band(band_id: int) -> dict:
+    band = next((b for b in BANDS if b["id"] == band_id), None)
+    """
+    x = (i for i in BANDS if i["id"] == 2)  # round brackets for generator
+    # list(x)
+    print(next(x))
+    print(next(x))
+
+    print(next(x, "xxx"))
+
+    """
+    if band is None:
+        # status code 404
+        raise HTTPException(status_code=404, detail="Band not found!")
+    return band
+
+
+################################
 
 
 if __name__ == "__main__":

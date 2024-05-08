@@ -71,3 +71,8 @@ Note: Make sure your (link unavailable) file has an ASGI-compatible application 
 #########################################33
 
 # Asynchronous programming enables concurrency,
+
+# pydantic for data validation
+
+Pydantic allows us to create classes that inherit from BaseModels.
+These classes contain fields that define the structure of piece of data

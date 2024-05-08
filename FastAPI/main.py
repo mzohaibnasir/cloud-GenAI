@@ -1,14 +1,22 @@
 from fastapi import FastAPI, HTTPException
-
+from enum import Enum
 import uvicorn
 
 fastapp = FastAPI()
+
+
+class GenreURLChoices(Enum):
+    X = "x"
+    Y = "y"
+    Z = "z"
+
 
 # creating list endpoint
 BANDS = [
     {"id": 1, "name": "A", "genre": "X"},
     {"id": 2, "name": "B", "genre": "Y"},
     {"id": 3, "name": "C", "genre": "Z"},
+    {"id": 3, "name": "S", "genre": "Z"},
 ]
 
 
@@ -30,9 +38,11 @@ async def bands() -> list[dict]:
 
 
 # to return band by id
-@fastapp.get("/bands/{band_id}")
+@fastapp.get("/bands/{band_id}", status_code=200)
 async def band(band_id: int) -> dict:
-    band = next((b for b in BANDS if b["id"] == band_id), None)
+    band = next(
+        (b for b in BANDS if b["id"] == band_id), None
+    )  # next( iterator, default) # one value not multiple values at a time
     """
     
     
@@ -50,6 +60,18 @@ async def band(band_id: int) -> dict:
         raise HTTPException(status_code=404, detail="Band not found!")
     return band
 
+
+# @fastapp.get("/bands/genre/{genre}")
+# async def bands_for_genre(genre: str) -> list[dict]:
+#     return [b for b in BANDS if b["genre"].lower() == genre.lower()]
+
+
+@fastapp.get("/bands/genre/{genre}")
+async def bands_for_genre(genre: GenreURLChoices) -> list[dict]:
+    return [b for b in BANDS if b["genre"].lower() == genre.value]
+
+
+# GenreURLChoices will return more descriptive error
 
 ################################
 

@@ -1,14 +1,16 @@
 from fastapi import FastAPI, HTTPException
-from enum import Enum
+from schemas import GenreURLChoices, BandDataClass
+
+# from enum import Enum
 import uvicorn
 
 fastapp = FastAPI()
 
 
-class GenreURLChoices(Enum):
-    X = "x"
-    Y = "y"
-    Z = "z"
+# class GenreURLChoices(Enum):
+#     X = "x"
+#     Y = "y"
+#     Z = "z"
 
 
 # creating list endpoint
@@ -32,28 +34,48 @@ async def about() -> str:
 
 ###############################3 TWO ENDPOINTS
 # to return list of data
+# @fastapp.get("/bands")
+# async def bands() -> list[dict]:
+#     return BANDS
+
+
 @fastapp.get("/bands")
-async def bands() -> list[dict]:
-    return BANDS
+async def bands() -> list[BandDataClass]:
+    return [BandDataClass(**b) for b in BANDS]  # with BandDataClass we have validation
 
 
 # to return band by id
+"""
 @fastapp.get("/bands/{band_id}", status_code=200)
 async def band(band_id: int) -> dict:
     band = next(
         (b for b in BANDS if b["id"] == band_id), None
     )  # next( iterator, default) # one value not multiple values at a time
-    """
-    
-    
-    x = (i for i in BANDS if i["id"] == 2)  # round brackets for generator
-    # list(x)
-    print(next(x))
-    print(next(x))
-    print(next(x, "xxx"))
-    
-    
-    """
+
+    # x = (i for i in BANDS if i["id"] == 2)  # round brackets for generator
+    # # list(x)
+    # print(next(x))
+    # print(next(x))
+    # print(next(x, "xxx"))
+
+    if band is None:
+        # status code 404
+        raise HTTPException(status_code=404, detail="Band not found!")
+    return band
+"""
+
+
+@fastapp.get("/bands/{band_id}", status_code=200)
+async def band(band_id: int) -> BandDataClass:
+    band = next(
+        (BandDataClass(**b) for b in BANDS if b["id"] == band_id), None
+    )  # next( iterator, default) # one value not multiple values at a time
+
+    # x = (i for i in BANDS if i["id"] == 2)  # round brackets for generator
+    # # list(x)
+    # print(next(x))
+    # print(next(x))
+    # print(next(x, "xxx"))
 
     if band is None:
         # status code 404

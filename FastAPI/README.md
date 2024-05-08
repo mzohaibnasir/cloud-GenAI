@@ -89,3 +89,7 @@ Pydantic's BaseModel class is a powerful tool for defining data structures in Py
 2. These annotations specify the expected data type for each field.
 
 # Type annotations are a that provides a way to specify the expected data type for variables, function arguments, and return values
+
+# `*b` unpacks a list into positional arguments
+
+# `**b` unpacks a dictionary into keyword arguments

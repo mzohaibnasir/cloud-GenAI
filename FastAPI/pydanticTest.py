@@ -19,10 +19,19 @@ Pydantic's BaseModel class is a powerful tool for defining data structures in Py
 # Type annotations are a that provides a way to specify the expected data type for variables, function arguments, and return values
 """
 
-from pydantic import BaseModel
+# from pydantic import BaseModel
+from schemas import GenreURLChoices, BandDataClass
+from main import BANDS
 
 
-class User(BaseModel):
-    name: str  # Name of the user (string)
-    age: int  # Age of the user (integer)
-    is_active: bool = True  # User status (boolean, default True)
+# return [BandDataClass(**b) for b in BANDS]
+
+
+# for b in BANDS:
+#     # print(*b)
+#     # print(**b)
+#     print(BandDataClass(**b))
+
+print([BandDataClass(**b) for b in BANDS])
+# *b unpacks a list into positional arguments
+# **b unpacks a dictionary into keyword arguments

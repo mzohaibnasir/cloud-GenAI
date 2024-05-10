@@ -21,8 +21,8 @@ BANDS = [
     {"id": 3, "name": "S", "genre": "Z"},
     {
         "id": 4,
-        "name": "Abc",
-        "genre": "XYZ",
+        "name": "A",
+        "genre": "Z",
         "albums": [{"title": "Title", "release_date": "1971-07-21"}],
     },
 ]
@@ -45,9 +45,35 @@ async def about() -> str:
 #     return BANDS
 
 
+# @fastapp.get("/bands")
+# async def bands() -> list[BandDataClass]:
+# return [BandDataClass(**b) for b in BANDS]  # with BandDataClass we have validation
+
+
+# @fastapp.get("/bands")
+# async def bands(
+#     genre: GenreURLChoices | None = None,  # fn will look for query parameter `genre``
+#     has_albums: bool = False,
+# ) -> list[BandDataClass]:
+#     if genre:
+#         return [BandDataClass(**b) for b in BANDS if b["genre"].lower() == genre.value]
+
+#     return [BandDataClass(**b) for b in BANDS]  # with BandDataClass we have validation
+#     # `| None = None` to return all of bands. when default is None mean qquery parameter is not required
+
+
 @fastapp.get("/bands")
-async def bands() -> list[BandDataClass]:
-    return [BandDataClass(**b) for b in BANDS]  # with BandDataClass we have validation
+async def bands(
+    genre: GenreURLChoices | None = None,  # fn will look for query parameter `genre``
+    has_albums: bool = False,
+) -> list[BandDataClass]:
+    band_list = [BandDataClass(**b) for b in BANDS]
+    if genre:
+        band_list = [b for b in band_list if b.genre.lower() == genre.value]
+    if has_albums:
+        band_list = [b for b in band_list if len(b.albums) > 0]
+    return band_list  # with BandDataClass we have validation
+    # `| None = None` to return all of bands. when default is None mean qquery parameter is not required
 
 
 # to return band by id

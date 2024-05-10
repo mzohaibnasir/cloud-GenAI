@@ -1,7 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Path,Query
 # from schemas import GenreURLChoices, BandDataClass
 from schemas import GenreURLChoices, BandBaseDataClass,BandCreateDataClass,BandWithIDDataClass
-
+from typing import Annotated
 # from enum import Enum
 import uvicorn
 
@@ -63,18 +63,36 @@ async def about() -> str:
 #     # `| None = None` to return all of bands. when default is None mean qquery parameter is not required
 
 
+# @fastapp.get("/bands")
+# async def bands(
+#     genre: GenreURLChoices | None = None,  # fn will look for query parameter `genre``
+#     has_albums: bool = False,
+# ) -> list[BandWithIDDataClass]:
+#     band_list = [BandWithIDDataClass(**b) for b in BANDS]
+#     if genre:
+#         band_list = [b for b in band_list if b.genre.value.lower() == genre.value]
+#     if has_albums:
+#         band_list = [b for b in band_list if len(b.albums) > 0]
+#     return band_list  # with BandDataClass we have validation
+#     # `| None = None` to return all of bands. when default is None mean qquery parameter is not required
+
+
+
 @fastapp.get("/bands")
 async def bands(
     genre: GenreURLChoices | None = None,  # fn will look for query parameter `genre``
-    has_albums: bool = False,
+    q:Annotated[str|None,Query(max_length=10)]=None
 ) -> list[BandWithIDDataClass]:
     band_list = [BandWithIDDataClass(**b) for b in BANDS]
     if genre:
         band_list = [b for b in band_list if b.genre.value.lower() == genre.value]
-    if has_albums:
-        band_list = [b for b in band_list if len(b.albums) > 0]
+    if q:
+        band_list = [b for b in band_list if q.lower() in b.name.lower() ]
     return band_list  # with BandDataClass we have validation
     # `| None = None` to return all of bands. when default is None mean qquery parameter is not required
+
+
+
 
 """
 2. GenreURLChoices | None: This specifies the expected type and optionality of the parameter.
@@ -106,8 +124,13 @@ async def band(band_id: int) -> dict:
 """
 
 
+"""
+Annotation cant work alone. FastAPI know how to work QUERY type. FastAPI's query is needed for Annotation to work
+Fastapi uses annotation to add metadata to request parameter
+we  can use that using Query from FastAPI and Annotated from typing"""
+
 @fastapp.get("/bands/{band_id}", status_code=200)
-async def band(band_id: int) -> BandWithIDDataClass:
+async def band(band_id: Annotated[int,Path(title="The band ID- go to Redoc")]) -> BandWithIDDataClass:
     band = next(
         (BandWithIDDataClass(**b) for b in BANDS if b["id"] == band_id), None
     )  # next( iterator, default) # one value not multiple values at a time
@@ -191,13 +214,7 @@ It is equivalent to:
 
 
 """
-Query parameters: Query is a set of key-value pairs after `?` in a URL, separated by `&` characters. `?` is query 
+Query parameters: 
+   Query is a set of key-value pairs after `?` in a URL, separated by `&` characters. `?` is query 
 separator and not part of query string. passes query string string directly to program i.e. `q=19&color=purple`
 """
-
-
-
-
-
-
-

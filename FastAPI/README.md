@@ -113,3 +113,21 @@ when you need to send data from a client(browser) to your API, you send it as a 
 ## A response body is data your API sends to the client.
 
 ## API always have to sent a response bosy but clients don't necessary need to send request bodies all the time.
+
+################################################################
+
+# typing.annotated
+
+special typing form to add context specific metadata to an annotation. Metadata added using `Annotaed` can be used by static analysis tools or at runtime.
+If a lib or tool encounters an annnotation Annotated[T,x] and has no special logic for the metadata. It should ignore the metadata and simply traeat annotation as T.
+
+` Annotated[<type>,<metadata>]`
+Annotated[int,ValueRange(-10,5)]
+
+# Fastapi uses annotation to add metadata to request parameter
+
+# Annotation cant work alone. FastAPI know how to work QUERY type. FastAPI's query is needed for Annotation to work
+
+# Fastapi uses annotation to add metadata to request parameter
+
+# we can use that using Query from FastAPI and Annotated from typing

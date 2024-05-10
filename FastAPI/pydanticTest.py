@@ -32,6 +32,11 @@ from main import BANDS
 #     # print(**b)
 #     print(BandDataClass(**b))
 
-print([BandDataClass(**b) for b in BANDS])
+
+if __name__ == "__main__":  # code to be executed only when the script is run directly
+    print([BandDataClass(**b) for b in BANDS])
 # *b unpacks a list into positional arguments
 # **b unpacks a dictionary into keyword arguments
+
+
+print(__name__)

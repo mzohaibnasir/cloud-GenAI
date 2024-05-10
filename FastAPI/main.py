@@ -109,7 +109,7 @@ async def bands_for_genre(genre: GenreURLChoices) -> list[BandDataClass]:
 ################################
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # code to be executed only when the script is run directly
     uvicorn.run(
         "main:fastapp", host="127.0.0.1", port=5000, log_level="info", reload=True
     )

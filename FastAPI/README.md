@@ -93,3 +93,7 @@ Pydantic's BaseModel class is a powerful tool for defining data structures in Py
 # `*b` unpacks a list into positional arguments
 
 # `**b` unpacks a dictionary into keyword arguments
+
+# Query parameters :Query is a set of key-value pairs after `?` in a URL, separated by `&` characters.
+
+`?` is query separator and not part of query string. passes query string string directly to program i.e. q=19&color=purple

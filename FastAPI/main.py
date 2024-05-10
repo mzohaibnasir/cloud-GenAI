@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
-from schemas import GenreURLChoices, BandDataClass
+# from schemas import GenreURLChoices, BandDataClass
+from schemas import GenreURLChoices, BandBaseDataClass,BandCreateDataClass,BandWithIDDataClass
 
 # from enum import Enum
 import uvicorn
@@ -66,8 +67,8 @@ async def about() -> str:
 async def bands(
     genre: GenreURLChoices | None = None,  # fn will look for query parameter `genre``
     has_albums: bool = False,
-) -> list[BandDataClass]:
-    band_list = [BandDataClass(**b) for b in BANDS]
+) -> list[BandWithIDDataClass]:
+    band_list = [BandWithIDDataClass(**b) for b in BANDS]
     if genre:
         band_list = [b for b in band_list if b.genre.lower() == genre.value]
     if has_albums:
@@ -106,9 +107,9 @@ async def band(band_id: int) -> dict:
 
 
 @fastapp.get("/bands/{band_id}", status_code=200)
-async def band(band_id: int) -> BandDataClass:
+async def band(band_id: int) -> BandWithIDDataClass:
     band = next(
-        (BandDataClass(**b) for b in BANDS if b["id"] == band_id), None
+        (BandWithIDDataClass(**b) for b in BANDS if b["id"] == band_id), None
     )  # next( iterator, default) # one value not multiple values at a time
 
     # x = (i for i in BANDS if i["id"] == 2)  # round brackets for generator
@@ -134,13 +135,40 @@ async def band(band_id: int) -> BandDataClass:
 
 
 @fastapp.get("/bands/genre/{genre}")
-async def bands_for_genre(genre: GenreURLChoices) -> list[BandDataClass]:
-    return [BandDataClass(**b) for b in BANDS if b["genre"].lower() == genre.value]
+async def bands_for_genre(genre: GenreURLChoices) -> list[BandWithIDDataClass]:
+    return [BandWithIDDataClass(**b) for b in BANDS if b["genre"].lower() == genre.value]
 
 
 # GenreURLChoices will return more descriptive error
 
 ################################
+
+
+""" 
+# POST request:
+
+when you need to send data from a client(browser) to your API, you send it as a request body.
+A request body is data sent by the client to your API. 
+A response body is data your API sends to the client.
+API always have to sent a response bosy but clients don't necessary need to send request bodies all the time.
+To decalre a requast body we'll declare pydantic models
+
+"""
+
+# create new band
+
+@fastapp.post("/bands")
+async def create_band_class(band_data:BandCreateDataClass)->BandWithIDDataClass: 
+    # with BandCreateDataClass, fastapi will automatically extract data from request body
+    id = BANDS[-1]["id"]+1
+    band = BandWithIDDataClass(id=id, **band_data.model_dump()).model_dump() # to get resultant dict
+    BANDS.append(band)
+    return band
+    
+
+
+
+########################################
 
 
 if __name__ == "__main__":  # code to be executed only when the script is run directly
@@ -166,3 +194,10 @@ It is equivalent to:
 Query parameters: Query is a set of key-value pairs after `?` in a URL, separated by `&` characters. `?` is query 
 separator and not part of query string. passes query string string directly to program i.e. `q=19&color=purple`
 """
+
+
+
+
+
+
+

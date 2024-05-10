@@ -18,9 +18,24 @@ class Album(BaseModel):
     release_date: date
 
 
-class BandDataClass(BaseModel):
-    # { 'id':1. 'name':'the band', 'genre': 'rock}
-    id: int
+# class BandDataClass(BaseModel):
+#     # { 'id':1. 'name':'the band', 'genre': 'rock}
+#     id: int
+#     name: str
+#     genre: str
+#     albums: list[Album] = []  # name: annotation type = default_value
+class BandBaseDataClass(BaseModel):
+    """ 
+    An abstract class that'll be inherited. It contains common fields
+    """
     name: str
     genre: str
     albums: list[Album] = []  # name: annotation type = default_value
+
+
+class BandCreateDataClass(BandBaseDataClass):
+    pass 
+
+class BandWithIDDataClass(BandBaseDataClass):
+    id: int
+    

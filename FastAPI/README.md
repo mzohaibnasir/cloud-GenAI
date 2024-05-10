@@ -100,6 +100,16 @@ Pydantic's BaseModel class is a powerful tool for defining data structures in Py
 
 # GenreURLChoices | None: This specifies the expected type and optionality of the parameter.
 
-1. GenreURLChoices: This likely refers to a custom enumeration class defined elsewhere in your code. This class presumably defines the allowed valid values for the genre parameter. By using an enumeration, you ensure that only valid genres are accepted by the endpoint.
-2. | None: The pipe symbol `|` acts as a union operator, indicating that the parameter can either be of type GenreURLChoices or None.
-3. = None: This sets the default value of the genre parameter to None. If the client doesn't explicitly provide a genre parameter in the request, it will be treated as None.
+1. `GenreURLChoices`: This likely refers to a custom enumeration class defined elsewhere in your code. This class presumably defines the allowed valid values for the genre parameter. By using an enumeration, you ensure that only valid genres are accepted by the endpoint.
+2. `| None`: The pipe symbol `|` acts as a union operator, indicating that the parameter can either be of type GenreURLChoices or None.
+3. `= None`: This sets the default value of the genre parameter to None. If the client doesn't explicitly provide a genre parameter in the request, it will be treated as None.
+
+# POST request:
+
+when you need to send data from a client(browser) to your API, you send it as a request body.
+
+## A request body is data sent by the client to your API.
+
+## A response body is data your API sends to the client.
+
+## API always have to sent a response bosy but clients don't necessary need to send request bodies all the time.

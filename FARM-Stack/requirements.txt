@@ -1,0 +1,3 @@
+fastapi
+uvicorn
+motor # full featured non-blocking IO MongoDB driver

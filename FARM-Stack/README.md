@@ -23,3 +23,31 @@ Some key features of MongoDB's document model include:
 
 3. `mongosh ` to access mongo shell
    1. show dbs
+
+##########################################################################333
+
+# `fastapi.middleware.cors import CORSMiddleware`
+
+## What is CORS?
+
+CORS is a security mechanism implemented by web browsers that restricts web pages from making requests to a different domain than the one that served the web page. This prevents malicious scripts from stealing data from other websites.
+CORS (Cross-Origin Resource Sharing) is a security feature implemented in web browsers to prevent web pages from making requests to a different origin (domain, protocol, or port) than the one the web page was loaded from. This is a security feature to prevent malicious scripts from making unauthorized requests on behalf of the user.
+FastAPI's CORSMiddleware class is used to enable CORS support in FastAPI applications. By using this middleware, you can specify which origins are allowed to make requests to your API, and which methods (GET, POST, etc.) are allowed.
+
+This code enables CORS support for the FastAPI application, allowing requests from any origin, with any method, and with any headers. The max_age parameter specifies the maximum age of the CORS configuration (in seconds).
+
+Why use CORSMiddleware?
+
+If your FastAPI application is intended to be accessed from a different domain (frontend website) than the one it's hosted on, you need to configure CORS to allow those cross-origin requests. Without proper CORS configuration, the browser will block requests from the frontend to your FastAPI backend, preventing your application from functioning as intended.
+
+`app = FastAPI()`
+`origins = ["https://your-frontend-domain.com"]`
+`app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["*"], allow_headers=["*"])`
+
+# ORIGIN is just a combination of `protocol` + `domain` + `port`
+
+protocol:(http,https)
+domain:(app.com)
+port:(800)
+
+React might have port:3000 and our FastAPI might have port:5000, we need backend permission to interact with different port

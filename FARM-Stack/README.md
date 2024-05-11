@@ -1,10 +1,8 @@
 # F-A-R-M STACK
 
-It is based on document model i.e. collection of docs
-
 # MongoDB is a NoSQL database
 
-that uses a document-oriented data model, where data is stored in JSON-like documents called BSON (Binary Serialized Object Notation). This allows for flexible and dynamic schema design, and makes it well-suited for handling large amounts of semi-structured or unstructured data.
+It is based on document model i.e. collection of docs. It uses a document-oriented data model, where data is stored in JSON-like documents called BSON (Binary Serialized Object Notation). This allows for flexible and dynamic schema design, and makes it well-suited for handling large amounts of semi-structured or unstructured data.
 In MongoDB, data is organized into collections, which are similar to tables in relational databases. Each collection contains a set of documents, which are similar to rows in a relational database. However, unlike relational databases, MongoDB documents can have different fields and structures, and can be modified dynamically without requiring a fixed schema.
 Some key features of MongoDB's document model include:
 

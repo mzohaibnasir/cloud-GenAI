@@ -51,3 +51,16 @@ domain:(app.com)
 port:(800)
 
 React might have port:3000 and our FastAPI might have port:5000, we need backend permission to interact with different port
+
+###########################################################################33
+
+The difference between the two is the way the response model is specified.
+
+# `@app.get("/api/todo{title}", response_model=baseTodoClass)`
+
+In this syntax, the response_model parameter is explicitly specified as part of the @app.get decorator. This tells FastAPI to use the baseTodoClass class as the response model for this endpoint.
+
+# `@app.get("/api/todo{title}") -> baseTodoClass`
+
+In this syntax, the response model is specified using the `->` syntax, which is a shorthand way to specify the response model. This is equivalent to the first syntax, but is a more concise way to specify the response model.
+Both syntaxes achieve the same result, which is to specify the response model for the endpoint. However, the first syntax is more explicit and clear, while the second syntax is more concise and shorthand.

@@ -1,13 +1,24 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from model import baseTodoClass
+from database import (
+    fetch_one_todo,
+    fetch_all_todos,
+    create_todo,
+    update_todo,
+    remove_todo,
+)
+import pdb
+
+# pdb.set_trace()
+
 
 app = FastAPI()
 
 # React might have port:3000 and our FastAPI might have port:8000, we need backend permission to interact with different port
-origins = ["https://localhost:3000"]
+origins = ["https://localhost:3000", "https://localhost:8001", "*"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -24,11 +35,24 @@ def read_root():
 
 
 @app.get("/api/todo")
-async def get_todo() -> list[baseTodoClass]:
-    return 1
+async def get_todo():
+    # response = await fetch_all_todos()
+    # breakpoint()
+    return "response"
 
 
-@app.get("/api/todo{id}")
+"""
+The difference between the two is the way the response model is specified.
+# `@app.get("/api/todo{title}", response_model=baseTodoClass)`
+In this syntax, the response_model parameter is explicitly specified as part of the @app.get decorator. This tells FastAPI to use the baseTodoClass class as the response model for this endpoint.
+# `@app.get("/api/todo{title}") -> baseTodoClass`
+In this syntax, the response model is specified using the -> syntax, which is a shorthand way to specify the response model. This is equivalent to the first syntax, but is a more concise way to specify the response model.
+Both syntaxes achieve the same result, which is to specify the response model for the endpoint. However, the first syntax is more explicit and clear, while the second syntax is more concise and shorthand.
+
+"""
+
+
+@app.get("/api/todo{title}", response_model=baseTodoClass)
 async def get_todo_by_id(id: int) -> baseTodoClass:
     return id
 
@@ -49,4 +73,4 @@ async def post_todo(id):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="localhost", port=8000, log_level="info", reload=True)
+    uvicorn.run("main:app", host="localhost", port=8001, log_level="info", reload=True)

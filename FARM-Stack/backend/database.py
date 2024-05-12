@@ -15,7 +15,7 @@ collection = database.todo
 
 
 async def fetch_one_todo(title) -> baseTodoClass:
-    document = await.collection.find_one({
+    document = await collection.find_one({
         "title":title})
     return document
 
@@ -26,7 +26,7 @@ async def fetch_all_todos():
     async for document in cursor:
         todos.append(baseTodoClass(**document)
     return todos
-    
-    
-    
-async create_todo()
+
+
+async create_todo():
+    pass

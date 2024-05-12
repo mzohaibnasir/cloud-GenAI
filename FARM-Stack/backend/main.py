@@ -36,9 +36,9 @@ def read_root():
 
 @app.get("/api/todo")
 async def get_todo():
-    # response = await fetch_all_todos()
+    response = await fetch_all_todos()
     # breakpoint()
-    return "response"
+    return response
 
 
 """

@@ -27,7 +27,7 @@ async def fetch_all_todos():
     return todos
 
 
-async def create_todo(todo: str) -> baseTodoClass:
+async def create_todo(todo):
     document = todo
     result = await collection.insert_one(document)
     return document

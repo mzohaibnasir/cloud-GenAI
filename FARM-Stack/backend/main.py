@@ -53,23 +53,35 @@ Both syntaxes achieve the same result, which is to specify the response model fo
 
 
 @app.get("/api/todo{title}", response_model=baseTodoClass)
-async def get_todo_by_id(id: int) -> baseTodoClass:
-    return id
+async def get_todo_by_id(title: str) -> baseTodoClass:
+    response = await fetch_one_todo(title)
+    if response:
+        return response
+    raise HTTPException(404, f"there is no TODO with this title: {title}")
 
 
-@app.put("/api/todo{id}")
-async def put_todo(id: int, data: str):
-    return 1
+@app.put("/api/todo{title}")
+async def put_todo(title: str, desc: str) -> baseTodoClass:
+    response = await update_todo(title, desc)
+    if response:
+        return response
+    raise HTTPException(404, f"there is no TODO with this title: {title}")
 
 
-@app.delete("/api/todo{id}")
-async def delete_todo(id: int):
-    return id
+@app.delete("/api/todo{title}")
+async def delete_todo(title):
+    response = await remove_todo(title)
+    if response:
+        return "Succesfully deleted"
+    raise HTTPException(404, f"there is no TODO with this title: {title}")
 
 
-@app.post("/api/todo{id}")
-async def post_todo(id):
-    return id
+@app.post("/api/todo")
+async def post_todo(todo: baseTodoClass) -> baseTodoClass:
+    response = await create_todo(todo.model_dump())
+    if response:
+        return response
+    raise HTTPException(400, "Something went wrong/bad request")
 
 
 if __name__ == "__main__":

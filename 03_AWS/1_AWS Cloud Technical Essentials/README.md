@@ -37,3 +37,7 @@ high speed and low latency links. A cluster of AZs is called Region.
 1. AWS Management console
 2. AWS CLI
 3. SDK
+
+###################################################################################
+
+# AWS IDENTITY & ACCESS MANAGMENT

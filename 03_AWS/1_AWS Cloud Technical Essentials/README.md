@@ -98,4 +98,89 @@ An IAM role is an identity that can be assumed by someone/something who needs te
 
 # IAM roles handle this signing process. IAM roles are identities in AWS that like an IAM user also have asssociated AWS credentials used to sign requests.
 
-# IAM users have usernames & password as well as static credentials.IAM ROLES don't have static one.Credentials are temporary and automatically rotated.
+# IAM users have usernames & password as well as static credentials.IAM ROLES don't have static one. Credentials are programmmatic, temporary and automatically rotated. EC2 instance will be assigned an IAM role which will help app runnning on it get access to S3.
+
+# External Identity providers can also assume IAM role
+
+###########WEEK2
+
+# CPV: Virtual Private Cloud
+
+Imagine you have your own little apartment in a giant apartment building, that's kind of like a VPC in AWS. VPC stands for Virtual Private Cloud. It's a private network you create within the AWS cloud, separate from the public internet.
+
+Here's why VPCs are useful:
+
+##### Security: They keep your resources, like virtual machines, isolated from others in the cloud. Think of your apartment building having its own security system, keeping things safe and sound.
+
+##### Control: You have control over who can access your resources. It's like having your own keys to your apartment, deciding who can visit.
+
+##### Flexibility: You can customize your network within the VPC, like adding different rooms (subnets) for different purposes in your apartment.
+
+So, VPCs provide a secure and customizable space for your AWS resources, just like your own little apartment in the cloud!
+
+# VPC (Virtual Private Cloud) in AWS is a virtual network dedicated to your AWS account. It allows you to define a virtual network topology, including subnets, route tables, and gateways, that is logically isolated from other virtual networks in the AWS Cloud.
+
+# In container everything is just packaged up in a single executable, container itself.
+
+container orchestration: Managing multiple containers.
+Amazon container orchestration tools:
+
+1. Amazon Rlastic container service
+2. Amazon Kubernetes service
+3. AWS Fargate
+
+# AWS Fargate: sreverless compute platform for ECS or EKS
+
+is a technology that allows you to run containers without managing servers or clusters of Amazon EC2 instances ¹. It provides on-demand, right-sized compute capacity for containers, and you don't have to provision, configure, or scale groups of virtual machines on your own to run containers ². Here are some key points about AWS Fargate ³:
+#############################
+
+# ORCHESTRATE CONTAINERS
+
+In AWS, containers run on EC2 instances. For example, you may have a large instance and run a few containers on that instance.While running one instance is easy to manage, it lacks high availability and scalability. Most companies and organizations run many containers on many EC2 instances across several Availability Zones.If you’re trying to manage your compute at a large scale, you need to know:
+
+How to place your containers on your instances.
+
+What happens if your container fails.
+
+What happens if your instance fails.
+
+How to monitor deployments of your containers.
+
+This coordination is handled by a container orchestration service. AWS offers two container orchestration services: Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS).
+
+MANAGE CONTAINERS WITH AMAZON ELASTIC CONTAINER SERVICE (AMAZON ECS)
+Amazon ECS is an end-to-end container orchestration service that allows you to quickly spin up new containers and manage them across a cluster of EC2 instances.
+
+To run and manage your containers, you need to install the Amazon ECS Container Agent on your EC2 instances. This agent is open source and responsible for communicating back to the Amazon ECS service about cluster management details. You can run this agent on both Linux and Windows AMIs. An instance with the container agent installed is often called a container instance.
+
+Once the Amazon ECS container instances are up and running, you can perform actions that include, but are not limited to, launching and stopping containers, getting cluster state, scaling in and out, scheduling the placement of containers across your cluster, assigning permissions, and meeting availability requirements.
+
+To prepare your application to run on Amazon ECS, you create a task definition. The task definition is a text file, in JSON format, that describes one or more containers. A task definition is similar to a blueprint that describes the resources you need to run that container, such as CPU, memory, ports, images, storage, and networking information.
+
+# AWS serverless
+
+Serverless Computing on AWS: Unleash Your Code, Ditch the Servers
+Serverless computing on AWS is a development approach where you focus on writing and deploying code, and AWS takes care of the servers behind the scenes. Here's the gist:
+
+1. You write the code: Think of it as the delicious recipe for your application.
+2. AWS provides the kitchen: They handle the servers, scaling, and management – all the infrastructure needed to cook your application.
+   3.You only pay for what you use: Just like at a restaurant, you're charged based on the resources your code consumes while it executes (cooking time).
+
+Benefits of Serverless on AWS:
+
+1. Simplified Management: No more server headaches! Focus on your code and application logic.
+2. Increased Agility: Faster development and deployment cycles. Get your app out there quicker!
+3. Cost-Effectiveness: Pay-per-use model saves you money on idle servers. Only pay for the "cooking time" of your code.
+4. Automatic Scaling: AWS scales your application up or down based on demand. No need to worry about server capacity.
+
+#########################
+
+# ECS or EKS is the container orchestrator. It manges container;s lifecycle. Then you need computer platform, this is where containers run.
+
+# ECS or EKS run containers on EC2 clusters but EC2 is not serverless
+
+# AWS fargate is SERVERLESS: it is a serverless compute platform for containers that you can use with either ECS or EKS. With AWS fargate you run containers on managed serverlesss compute platform. Scaling and fault tolerance is built in and no need to worry about underlying OS.
+
+# Amazon ECR: Elastic container Registry: a repository to store container images to be pulled and deployed from.
+
+then , in fargate to run these conatiners, you define memory and compute resources for your task if you are using ECS or your pod if you are using EKS. Then you run your containers,

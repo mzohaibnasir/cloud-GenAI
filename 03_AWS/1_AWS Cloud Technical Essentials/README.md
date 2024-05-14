@@ -40,4 +40,62 @@ high speed and low latency links. A cluster of AZs is called Region.
 
 ###################################################################################
 
-# AWS IDENTITY & ACCESS MANAGMENT
+# AWS IDENTITY & ACCESS Control and Credential management
+
+# IAM
+
+All API calls in AWS must be signed and authenticated in order to be allowed; no matter if the resources live in the same account or not. Application code running on the EC2 instance nneds access to credentials to make this signed call to S3.IAM does that.
+
+# Aplication lvl Managment(authenticating users into the application itself) is not managed by IAM
+
+# IAM handles access to AWS account and READ/WRITE between different AWS services.
+
+## Authentication:You are who you say you are
+
+IAM users take care of authentication
+
+## Authorization: Are you autherized to launch this task.
+
+you can take care of authorization by attatching IAM policies to users in order to grant or deny permissions to take actions. IAM policies are json based docs
+
+# ROLE BASED IAM USERS: to handle signed API calls between resouces.
+
+# IAM policy
+
+{
+
+"Version": "2012-10-17",
+
+     "Statement": [{
+          "Effect": "Allow",
+
+          "Action": "*",
+
+          "Resource": "*"
+
+     }]
+
+}
+
+In this policy, there are four major JSON elements: Version, Effect, Action, and Resource.
+
+The Version element defines the version of the policy language. It specifies the language syntax rules that are needed by AWS to process a policy. To use all the available policy features, include "Version": "2012-10-17" before the "Statement" element in all your policies.
+
+The Effect element specifies whether the statement will allow or deny access. In this policy, the Effect is "Allow", which means you’re providing access to a particular resource.
+
+The Action element describes the type of action that should be allowed or denied. In the above policy, the action is "\*". This is called a wildcard, and it is used to symbolize every action inside your AWS account.
+
+The Resource element specifies the object or objects that the policy statement covers. In the policy example above, the resource is also the wildcard "\*". This represents all resources inside your AWS console.
+
+# IAM users have associated credentials like an access key ID and secret access key that re used to sign requests.
+
+# ROLE BASED ACCESS IN AWS:
+
+Policies can be assigned to users and group to assign permissions.
+An IAM role is an identity that can be assumed by someone/something who needs temp access to AWS credentials.
+
+## so how does the process of signing API calls work
+
+# IAM roles handle this signing process. IAM roles are identities in AWS that like an IAM user also have asssociated AWS credentials used to sign requests.
+
+# IAM users have usernames & password as well as static credentials.IAM ROLES don't have static one.Credentials are temporary and automatically rotated.

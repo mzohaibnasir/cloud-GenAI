@@ -225,6 +225,8 @@ AWS Lambda requires zero administration from the user. You upload your source co
 
 i.e. Resize image whenever it is uploaded in s3 bucket. It will resize it and will store it at some other place in s3 bucket
 
+#### A trigger integrates your Lambda function with other AWS services, enabling you to run your Lambda function in response to certain API calls that occur in your AWS account.
+
 #### Here are some key features of AWS Lambda:
 
 1. Serverless: No need to provision or manage servers
@@ -240,3 +242,13 @@ i.e. Resize image whenever it is uploaded in s3 bucket. It will resize it and wi
 2. APIs: Creating RESTful APIs and handling API requests
 3. Background tasks: Running tasks in the background, such as sending emails or processing files
 4. IoT: Handling IoT device data and processing it in real-time
+
+#### AWS Lambda function handler
+
+The AWS Lambda function handler is the method in your function code that processes events. When your function is invoked, Lambda runs the handler method. When the handler exits or returns a response, it becomes available to handle another event.You can use the following general syntax when creating a function handler in Python:
+
+`def handler_name(event, context): ... return some_value`
+
+## ################################################################################
+
+---

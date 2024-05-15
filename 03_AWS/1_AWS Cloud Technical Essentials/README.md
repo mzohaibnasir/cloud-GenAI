@@ -295,7 +295,31 @@ Here are some key features of VPC:
 6. Network ACLs: Control inbound and outbound traffic at the subnet level
 7. Supports multiple IP addresses: Including IPv4 and IPv6
 
-#### To create a VPC, you have to declare two specific settings.
+#### To create a VPC:
 
-1. Region you are selecting
-2. IP range for VPC in form of CIDR notation.
+1. first, you have to declare two specific settings.
+
+   1. Region
+   2. IP range for VPC in form of CIDR notation.
+
+Then divide your space inside VPC into smaller segments called subnets.You put your resources inside of these subnets. The goal of these subnets is to provide more granular control over access to your resources. So, if we have public resources that require internet connectivity like our employee directory app that we want to be accessed over public internet, we can put them in a subnet with internet connectivity. For our more private resources, I can create another subnet and have different controls to keep those resources private.
+
+Subnets are a fundamental building block within a VPC (Virtual Private Cloud) on cloud platforms. They act like logical partitions within your VPC, allowing you to further segment your network resources.Imagine carving your VPC network into smaller, more manageable sections. Each subnet represents one such section with a designated pool of IP addresses. You can launch resources like EC2 instances (AWS) or virtual machines (other providers) within these subnets.
+
+2. To create a subnet: you need three main things:
+   1. VPC you want your subnet to live in
+   2. AZ you want yout subnet to live in.
+   3. CIDR range for your subnet which would be subnet of the VPC CIDR range.
+      public subnet: `10.1.1.0/24`
+      private subnet: `10.1.3.0/24`
+
+#### Right now, only resources inside VC have acces to our WebAPP. To enable outside access, we need a component called internet gateway
+
+### Internet Gateway connects you VPC to internet.
+
+An internet gateway in a VPC (Virtual Private Cloud) acts as the entry and exit point for internet traffic. It's a crucial component if you need resources within your VPC to communicate with the wider internet. Here's a closer look at internet gateways:
+
+#### Purpose:
+
+1. Enables resources in your VPC, like EC2 instances, to initiate outbound connections to the internet (e.g., downloading updates, accessing web services).
+2. Allows inbound connections to your VPC resources from the internet (if configured with security groups and route tables to permit it).

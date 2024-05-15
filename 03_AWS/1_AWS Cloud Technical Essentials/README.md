@@ -265,10 +265,21 @@ in binary but in decoimal they look something like `192.168.0.1`
 One way is by using Classless Inter-Domain Routing (CIDR) notation. CIDR notation is a compressed way of specifying a range of IP addresses. Specifying a range determines how many IP addresses are available to you.
 
 CIDR notation looks like this:
+`192.168.1.0/24` here `192.168.1` are fixed bits while `0` is flexible
+
+It begins with a starting IP address and is separated by a forward slash (the “/” character) followed by a number. The number at the end specifies how many of the bits of the IP address are fixed. In this example, the first 24 bits of the IP address are fixed. The rest are flexible.
+
+32 total bits subtracted by 24 fixed bits leaves 8 flexible bits. Each of these flexible bits can be either 0 or 1, because they are binary. That means you have two choices for each of the 8 bits, providing 256 IP addresses in that IP range.
+
+The higher the number after the /, the smaller the number of IP addresses in your network. For example, a range of 192.168.1.0/24 is smaller than 192.168.1.0/16.
+
+When working with networks in the AWS Cloud, you choose your network size by using CIDR notation. In AWS, the smallest IP range you can have is /28, which provides you 16 IP addresses. The largest IP range you can have is a /16, which provides you with 65,536 IP addresses.
 
 ## Virtual Private Cloud(VPC)
 
-#### VPC is the bnetwork that enables internet traffic to float into your application.
+#### VPC is the network that enables internet traffic to float into your application.
+
+VPC is like walls around data center. In data centers, walls act as a boundary between outside world and all of your infrastructure. A VPC acts as a boundary where your applications and resources are isolated from any outside movement. Nothinng comes into the VPC and nothing goes out without your explicit permission.
 
 A Virtual Private Cloud (VPC) is a virtual network dedicated to your AWS account. It allows you to define a virtual network topology, including subnets, route tables, and gateways, which are logically isolated from other virtual networks in the AWS Cloud.
 
@@ -283,3 +294,8 @@ Here are some key features of VPC:
 5. Security groups: Control inbound and outbound traffic at the instance level
 6. Network ACLs: Control inbound and outbound traffic at the subnet level
 7. Supports multiple IP addresses: Including IPv4 and IPv6
+
+#### To create a VPC, you have to declare two specific settings.
+
+1. Region you are selecting
+2. IP range for VPC in form of CIDR notation.

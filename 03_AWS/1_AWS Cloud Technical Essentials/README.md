@@ -1,4 +1,8 @@
-## Amazon API Gateway
+# AWS
+
+#### Latency refers to the time delay it takes for data to travel from one point to another across a network.
+
+## 1. Amazon API Gateway
 
 is a service offered by Amazon Web Services (AWS) that simplifies the process of creating, publishing, maintaining, monitoring, and securing APIs at any scale [1]. An API, or Application Programming Interface, acts as a middleman between applications and backend services. It essentially provides a way for applications to access data, functionality, or business logic from backend resources.
 
@@ -11,11 +15,11 @@ is a service offered by Amazon Web Services (AWS) that simplifies the process of
 
 If you're looking to build APIs for your own applications or open them up to third-party developers, AWS API Gateway is a powerful tool that can streamline the process.
 
-# An Avaibility Zone
+## 2. An Avaibility Zone
 
 is a geographically separate location within an AWS Region. These zones are isolated from each other to ensure an outage in one zone doesn't disrupt others. Each AZ consists of one or more data centers with redundant power, networking, and physical separation. Imagine them as mini-regions within a larger AWS Region.
 
-## Benefits:
+### Benefits:
 
 1. Enhanced Fault Tolerance: If an AZ experiences a power outage or hardware failure, your application can seamlessly continue functioning in another zone.
 2. Reduced Latency: Since AZs are geographically close within a region, resources in different zones enjoy low-latency network connections. This is crucial for real-time applications.
@@ -23,14 +27,12 @@ is a geographically separate location within an AWS Region. These zones are isol
 
    In essence, AZs are the foundation for building robust and fault-tolerant applications on AWS.
 
-# REGiON
+## 3. REGION
 
 IF AZ goes down, using redundancy like data centeres, AWS also clusters AZs together. and also connects them with redundant
 high speed and low latency links. A cluster of AZs is called Region.
 
-# Latency refers to the time delay it takes for data to travel from one point to another across a network.
-
-###################################################################################
+## ###################################################################################
 
 # WAYS TO INTERACT WITH AWS"
 

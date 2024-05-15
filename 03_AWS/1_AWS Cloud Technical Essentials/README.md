@@ -87,7 +87,7 @@ The Action element describes the type of action that should be allowed or denied
 
 The Resource element specifies the object or objects that the policy statement covers. In the policy example above, the resource is also the wildcard "\*". This represents all resources inside your AWS console.
 
-# IAM users have associated credentials like an access key ID and secret access key that re used to sign requests.
+##### IAM users have associated credentials like an access key ID and secret access key that re used to sign requests.
 
 # ROLE BASED ACCESS IN AWS:
 
@@ -179,8 +179,6 @@ Benefits of Serverless on AWS:
 
 # ECS or EKS run containers on EC2 clusters but EC2 is not serverless
 
-# AWS fargate is SERVERLESS: it is a serverless compute platform for containers that you can use with either ECS or EKS. With AWS fargate you run containers on managed serverlesss compute platform. Scaling and fault tolerance is built in and no need to worry about underlying OS.
-
 # Amazon ECR: Elastic container Registry: a repository to store container images to be pulled and deployed from.
 
-then , in fargate to run these conatiners, you define memory and compute resources for your task if you are using ECS or your pod if you are using EKS. Then you run your containers,
+# AWS fargate is SERVERLESS: it is a serverless compute platform for containers that you can use with either ECS or EKS. With AWS fargate you run containers on managed serverlesss compute platform. Scaling and fault tolerance is built in and no need to worry about underlying OS.then , in fargate to run these conatiners, you define memory and compute resources for your task if you are using ECS or your pod if you are using EKS. Then you run your containers,

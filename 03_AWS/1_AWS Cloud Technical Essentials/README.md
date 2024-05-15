@@ -32,9 +32,9 @@ is a geographically separate location within an AWS Region. These zones are isol
 IF AZ goes down, using redundancy like data centeres, AWS also clusters AZs together. and also connects them with redundant
 high speed and low latency links. A cluster of AZs is called Region.
 
-## ###################################################################################
+#####################################################################################
 
-# WAYS TO INTERACT WITH AWS"
+## WAYS TO INTERACT WITH AWS
 
 1. AWS Management console
 2. AWS CLI

@@ -164,6 +164,16 @@ To prepare your application to run on Amazon ECS, you create a task definition. 
 
 ## AWS serverless
 
+Every definition of serverless mentions four aspects.
+
+1. No servers to provision or manage.
+
+2. Scales with usage.
+
+3. You never pay for idle resources.
+
+4. Availability and fault tolerance are built-in.
+
 ### Serverless Computing on AWS: Unleash Your Code, Ditch the Servers
 
 ### Serverless computing on AWS is a development approach where you focus on writing and deploying code, and AWS takes care of the servers behind the scenes. Here's the gist:
@@ -187,12 +197,46 @@ To prepare your application to run on Amazon ECS, you create a task definition. 
 
 ## AWS fargate is SERVERLESS:
 
----
-
 wit is a serverless compute platform for containers that you can use with either ECS or EKS. With AWS fargate you run containers on managed serverlesss compute platform. Scaling and fault tolerance is built in and no need to worry about underlying OS.then , in fargate to run these conatiners, you define memory and compute resources for your task if you are using ECS or your pod if you are using EKS. Then you run your containers,
 
----
+## EXPLORE SERVERLESS CONTAINERS WITH AWS FARGATE
+
+Amazon ECS and Amazon EKS enable you to run your containers in two modes.
+
+1. Amazon EC2 mode
+
+2. AWS Fargate mode
+
+AWS Fargate is a purpose-built serverless compute engine for containers. Fargate scales and manages the infrastructure, allowing developers to work on what they do best: application development.It achieves this by allocating the right amount of compute, eliminating the need to choose and handle EC2 Instances and cluster capacity and scaling. Fargate supports both Amazon ECS and Amazon EKS architecture and provides workload isolation and improved security by design.
+
+AWS Fargate abstracts the EC2 instance so you’re not required to manage it. However, with AWS Fargate, you can use all the same ECS primitives, APIs, and AWS integrations. It natively integrates with AWS Identity and Access Management (IAM) and Amazon Virtual Private Cloud (VPC). Having native integration with Amazon VPC allows you to launch Fargate containers inside your network and control connectivity to your applications.
 
 ## AWS LAMBDA
 
----
+AWS Lambda is a serverless computing service provided by Amazon Web Services (AWS). It allows users to run code without provisioning or managing servers, and only charges for the compute time consumed by the code.
+
+If you want to deploy your workloads and applications without having to manage any EC2 instances or containers, you can use AWS Lambda.AWS Lambda lets you run code without provisioning or managing servers or containers. You can run code for virtually any type of application or backend service, including data processing, real-time stream processing, machine learning, WebSockets, IoT backends, mobile backends, and web apps, like your corporate directory app!
+
+AWS Lambda requires zero administration from the user. You upload your source code and Lambda takes care of everything required to run and scale your code with high availability. There are no servers to manage, bringing you continuous scaling with subsecond metering and consistent performance
+
+#### Lambda allows you to package and upload your code to the Lambda service, creating what is called lambda function.
+
+#### It is uusede when you dont need code to be running 24/7. It runs whenever event is triggered
+
+i.e. Resize image whenever it is uploaded in s3 bucket. It will resize it and will store it at some other place in s3 bucket
+
+#### Here are some key features of AWS Lambda:
+
+1. Serverless: No need to provision or manage servers
+2. Event-driven: Code is executed in response to events (e.g. API calls, database updates, file uploads)
+3. Scalable: Automatically scales to handle large workloads
+4. High availability: Code is executed in multiple availability zones
+5. Supports multiple programming languages: Node.js, Python, Java, Go, Ruby, and more
+6. Integrated with AWS services: Can be used with other AWS services like API Gateway, S3, DynamoDB, and more
+
+#### AWS Lambda is commonly used for:
+
+1. Real-time data processing: Processing data in real-time, such as image or video processing
+2. APIs: Creating RESTful APIs and handling API requests
+3. Background tasks: Running tasks in the background, such as sending emails or processing files
+4. IoT: Handling IoT device data and processing it in real-time

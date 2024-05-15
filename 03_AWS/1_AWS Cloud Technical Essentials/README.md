@@ -249,6 +249,37 @@ The AWS Lambda function handler is the method in your function code that process
 
 `def handler_name(event, context): ... return some_value`
 
-## ################################################################################
-
 ---
+
+# NETWORKING ON AWS
+
+#### ipv4:
+
+It’s called 32-bit because you have 32 digits `10101010 10101010 10101010 10101010`
+in binary but in decoimal they look something like `192.168.0.1`
+
+#### CIDR(Classless Inter-Domain Routing (CIDR) notation) NOTATION
+
+192.168.1.30 is a single IP address. If you wanted to express IP addresses between the range of 192.168.1.0 and 192.168.1.255, how can you do that?
+
+One way is by using Classless Inter-Domain Routing (CIDR) notation. CIDR notation is a compressed way of specifying a range of IP addresses. Specifying a range determines how many IP addresses are available to you.
+
+CIDR notation looks like this:
+
+## Virtual Private Cloud(VPC)
+
+#### VPC is the bnetwork that enables internet traffic to float into your application.
+
+A Virtual Private Cloud (VPC) is a virtual network dedicated to your AWS account. It allows you to define a virtual network topology, including subnets, route tables, and gateways, which are logically isolated from other virtual networks in the AWS Cloud.
+
+#### lambda does not need network at all
+
+Here are some key features of VPC:
+
+1. Virtual network: A logically isolated section of the AWS Cloud
+2. Subnets: Divide your VPC into smaller, isolated networks
+3. Route tables: Control how traffic is routed within your VPC
+4. Gateways: Connect your VPC to the internet or other networks
+5. Security groups: Control inbound and outbound traffic at the instance level
+6. Network ACLs: Control inbound and outbound traffic at the subnet level
+7. Supports multiple IP addresses: Including IPv4 and IPv6

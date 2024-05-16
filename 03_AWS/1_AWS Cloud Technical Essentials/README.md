@@ -361,3 +361,5 @@ Since AWS reserves these five IP addresses, it can impact how you design your ne
 2. Virtual Private Gateway
 
    A virtual private gateway allows you to connect your AWS VPC to another private network. Once you create and attach a VGW to a VPC, the gateway acts as anchor on the AWS side of the connection. On the other side of the connection, you’ll need to connect a customer gateway to the other private network. A customer gateway device is a physical device or software application on your side of the connection. Once you have both gateways, you can then establish an encrypted VPN connection between the two sides.
+
+## Amazon VPC routing

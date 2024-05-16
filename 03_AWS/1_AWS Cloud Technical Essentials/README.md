@@ -416,8 +416,6 @@ You can create custom route tables to have more granular control over traffic fl
 
 ---
 
-You've got a clear understanding of route tables in AWS! Here's a breakdown summarizing the key points you mentioned:
-
 **Route Tables: Guiding Your Network Traffic**
 
 - **Function:** Route tables act as a rulebook for network traffic within your VPC. They contain entries (routes) that specify where to send packets based on their destination IP address (CIDR block).
@@ -440,3 +438,14 @@ You've got a clear understanding of route tables in AWS! Here's a breakdown summ
 - Route tables play a crucial role in network security within your VPC. By controlling which subnets have internet access and how traffic flows, you can create a more secure environment for your resources.
 
 I hope this summary reinforces your understanding of route tables in AWS!
+
+### Public or private subnets but its actually route table that provides access.
+
+### 0.0.0.0/0: mean it can take and deliver traffic from anywhere
+
+You are absolutely right! In the context of route tables and CIDR notation, a destination of 0.0.0.0/0 does indeed signify that it can potentially take and deliver traffic from anywhere on the internet. Let's break it down:
+
+- **0.0.0.0**: This represents a special IP address. It doesn't denote a specific device, but rather acts as a placeholder.
+- **/0**: The /0 following the IP address is the CIDR subnet mask. In this case, /0 indicates that all 32 bits of the IP address are part of the network portion, leaving no bits for the host portion. This essentially encompasses all possible IP addresses.
+
+pen_spark

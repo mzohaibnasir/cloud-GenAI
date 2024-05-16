@@ -371,6 +371,7 @@ Traffic has entered into VPC through Internet gateway but that does not mean it 
 A route table contains a set of rules called routes that are used to determine where the network traffic is directed. These route tables can be applied at subnet levels or VPC level.
 
 When you create a brand new VPC, AWS creates a route table called the main route table.
+wether subnet have access to public connectivity depends onits associated route table. If a route from the gateway to subnet exists, it has public access.
 
 Route tables are a fundamental part of managing traffic flow within a VPC (Virtual Private Cloud) in AWS. They act like a set of instructions that direct network traffic to its destination. Here's a breakdown of route tables in AWS:
 
@@ -412,3 +413,30 @@ You can create custom route tables to have more granular control over traffic fl
 3. Scalability: You can easily add new routes or modify existing ones to adapt to changes in your network configuration.
 
 **Overall, route tables are essential for managing network traffic flow within your VPC in AWS. They provide a mechanism to control where your resources communicate and ensure proper connectivity within your cloud environment.**
+
+---
+
+You've got a clear understanding of route tables in AWS! Here's a breakdown summarizing the key points you mentioned:
+
+**Route Tables: Guiding Your Network Traffic**
+
+- **Function:** Route tables act as a rulebook for network traffic within your VPC. They contain entries (routes) that specify where to send packets based on their destination IP address (CIDR block).
+- **Application:** Route tables can be applied at two levels:
+  - **Subnet Level:** A subnet can be associated with a specific route table, providing granular control over its traffic flow.
+  - **VPC Level (Main Route Table):** Every VPC comes with a default main route table that applies to all subnets without a custom association.
+
+**Main Route Table: A Starting Point**
+
+- When you create a new VPC, AWS automatically generates a main route table. This default table might not have a route for internet access, so additional configuration is often needed.
+
+**Public Connectivity: A Subnet's Gateway Connection**
+
+- Whether a subnet has public internet access depends on its associated route table. If the route table includes a route that directs traffic to an internet gateway (IGW) for the subnet, then the subnet has public connectivity.
+  - In essence, the presence of a route from the IGW to the subnet in the route table acts as the key for public internet access.
+
+**Additional Notes:**
+
+- Custom route tables offer more control over traffic flow compared to the main route table. You can create custom routes for specific destinations, like NAT gateways for outbound internet access from private subnets.
+- Route tables play a crucial role in network security within your VPC. By controlling which subnets have internet access and how traffic flows, you can create a more secure environment for your resources.
+
+I hope this summary reinforces your understanding of route tables in AWS!

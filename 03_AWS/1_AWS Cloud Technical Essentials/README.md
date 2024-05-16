@@ -306,14 +306,25 @@ Then divide your space inside VPC into smaller segments called subnets.You put y
 
 Subnets are a fundamental building block within a VPC (Virtual Private Cloud) on cloud platforms. They act like logical partitions within your VPC, allowing you to further segment your network resources.Imagine carving your VPC network into smaller, more manageable sections. Each subnet represents one such section with a designated pool of IP addresses. You can launch resources like EC2 instances (AWS) or virtual machines (other providers) within these subnets.
 
-2. To create a subnet: you need three main things:
-   1. VPC you want your subnet to live in
-   2. AZ you want yout subnet to live in.
-   3. CIDR range for your subnet which would be subnet of the VPC CIDR range.
-      public subnet: `10.1.1.0/24`
-      private subnet: `10.1.3.0/24`
+2. Subnet:
+   After you create your VPC, you need to create subnets inside of this network. Think of subnets as smaller networks inside your base network—or virtual area networks (VLANs) in a traditional, on-premises network. In an on-premises network, the typical use case for subnets is to isolate or optimize network traffic. In AWS, subnets are used for high availability and providing different connectivity options for your resources. When you create a subnet, you need to choose three settings.
 
-#### Right now, only resources inside VC have acces to our WebAPP. To enable outside access, we need a component called internet gateway
+   1. The VPC you want your subnet to live in, in this case VPC (10.0.0.0/16).
+
+   2. The Availability Zone you want your subnet to live in, in this case AZ1.
+
+   3. A CIDR block for your subnet, which must be a subset of the VPC CIDR block, in this case 10.0.0.0/24.
+
+When you launch an EC2 instance, you launch it inside a subnet, which will be located inside the Availability Zone you choose.  
+ To create a subnet: you need three main things:
+
+1.  VPC you want your subnet to live in
+2.  AZ you want yout subnet to live in.
+3.  CIDR range for your subnet which would be subnet of the VPC CIDR range.
+    public subnet: `10.1.1.0/24`
+    private subnet: `10.1.3.0/24`
+
+#### Right now, only resources inside VC have acces to our WebAPP. To enable outside access, we need a component called internet gateway. Ypu need to attatch your gateway to VPC.
 
 ### Internet Gateway connects you VPC to internet.
 
@@ -323,3 +334,18 @@ An internet gateway in a VPC (Virtual Private Cloud) acts as the entry and exit 
 
 1. Enables resources in your VPC, like EC2 instances, to initiate outbound connections to the internet (e.g., downloading updates, accessing web services).
 2. Allows inbound connections to your VPC resources from the internet (if configured with security groups and route tables to permit it).
+
+#### What if we want to only allow traffic between data center and VPC, we'll use virtual Private gateway(VGW):
+
+VGW allows you to create VPN connection between private network(like data center) and VPC. With help of VGW, you can establish encrypted VPN connection to your private internal AWS resources.
+
+## So we have VPC, 2 subnets and an internet gateway. We'll do all this in another AZ
+
+---
+
+# Reserved IPs
+
+For AWS to configure your VPC appropriately, AWS reserves five IP addresses in each subnet. These IP addresses are used for routing, Domain Name System (DNS), and network management.
+
+For example, consider a VPC with the IP range 10.0.0.0/22. The VPC includes 1,024 total IP addresses. This is divided into four equal-sized subnets, each with a /24 IP range with 256 IP addresses. Out of each of those IP ranges, there are only 251 IP addresses that can be used because AWS reserves five.
+![alt text](fC4DaI4uRuCRtkolNtRUSA_2ceb6c8eeddf4ffba7175739502a34f1_image.png)

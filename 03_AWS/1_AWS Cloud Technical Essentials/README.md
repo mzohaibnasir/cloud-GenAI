@@ -362,4 +362,53 @@ Since AWS reserves these five IP addresses, it can impact how you design your ne
 
    A virtual private gateway allows you to connect your AWS VPC to another private network. Once you create and attach a VGW to a VPC, the gateway acts as anchor on the AWS side of the connection. On the other side of the connection, you’ll need to connect a customer gateway to the other private network. A customer gateway device is a physical device or software application on your side of the connection. Once you have both gateways, you can then establish an encrypted VPN connection between the two sides.
 
-## Amazon VPC routing
+## Amazon VPC routing:
+
+Traffic has entered into VPC through Internet gateway but that does not mean it entered the right room. We need to provide a path for the internet traffic.It makes sure that traffic enter the internet gateway and reach the right subnet. We do that using route tables
+
+### Route tables
+
+A route table contains a set of rules called routes that are used to determine where the network traffic is directed. These route tables can be applied at subnet levels or VPC level.
+
+When you create a brand new VPC, AWS creates a route table called the main route table.
+
+Route tables are a fundamental part of managing traffic flow within a VPC (Virtual Private Cloud) in AWS. They act like a set of instructions that direct network traffic to its destination. Here's a breakdown of route tables in AWS:
+
+#### Concept:
+
+Imagine a table with entries specifying where to send different types of traffic. Each entry (route) has a destination (CIDR block) and a target (gateway or another subnet) that determines the path for traffic.
+
+#### Key Components:
+
+1. Destination (CIDR block): This specifies the IP address range for which the route applies. For example, "0.0.0.0/0" represents all traffic on the internet.
+
+2. Target: This defines where to send traffic for the specified destination. It can be:
+   1. Internet Gateway (IGW): Directs traffic to the internet.
+   2. NAT Gateway: Enables outbound traffic from a private subnet to the internet.
+   3. Virtual Private Gateway (VGW): Routes traffic to a VPN connection for on-premises network access.
+   4. Another Subnet: Routes traffic to a different subnet within the VPC.
+
+#### How Route Tables Work:
+
+1. When a network packet originates from an instance in a subnet, its destination IP address is examined.
+2. The subnet's route table is consulted to find a matching route (based on the destination CIDR block).
+3. If a match is found, the packet is forwarded to the specified target (gateway or another subnet).
+4. The target then handles further routing or transmission of the packet.
+
+#### Main vs. Custom Route Tables:
+
+##### Main Route Table (default):
+
+Every VPC comes with a main route table automatically. It applies to all subnets that are not explicitly associated with a custom route table. The main route table typically doesn't have a route for internet access, so you'll need to create a custom route if you need internet connectivity in your VPC.
+
+##### Custom Route Tables:
+
+You can create custom route tables to have more granular control over traffic flow for specific subnets within your VPC. You can associate one or more subnets with a custom route table.
+
+#### Benefits of Route Tables:
+
+1. Control Traffic Flow: You can define how traffic is routed within your VPC and to the internet.
+2. Security: By controlling which subnets have internet access and how traffic flows, you can enhance the security of your VPC resources.
+3. Scalability: You can easily add new routes or modify existing ones to adapt to changes in your network configuration.
+
+**Overall, route tables are essential for managing network traffic flow within your VPC in AWS. They provide a mechanism to control where your resources communicate and ensure proper connectivity within your cloud environment.**

@@ -461,7 +461,9 @@ There are two main parts to this route table.
 
 2. The target, which is the connection through which to send the traffic. In this case, the traffic is routed through the local VPC network.
 
-Security groups and Network ACLs (ACLs) in AWS both play a role in securing your resources, but they function at different layers and offer distinct controls. Here's a breakdown of their key differences:
+## Security groups and Network ACLs (ACLs)
+
+in AWS both play a role in securing your resources, but they function at different layers and offer distinct controls. Here's a breakdown of their key differences:
 
 **Security Groups:**
 

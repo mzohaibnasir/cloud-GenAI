@@ -862,7 +862,9 @@ Data that changes in access frequency: Some documents are frequently accessed fo
 
 ---
 
-## S3 doesn't have file structure. its flat but EFS has.
+## S3 doesn't have file structure. its flat but EFS has; for file structure we use EFS
+
+To replicate a bit of isolation, we can create hierarchy like using "/" in filename.
 
 ---
 

@@ -506,3 +506,53 @@ in AWS both play a role in securing your resources, but they function at differe
 - **Network ACLs** offer broader, subnet-level control over traffic flow.
 
 By understanding these differences, you can effectively configure security groups and network ACLs to create a secure environment for your AWS resources.
+
+### NACL are stateless: so only specifying inbound rule wont allow server to send back response.
+
+### Security groups are stateful, which is a crucial aspect of their functionality compared to(ACLs). You dont have to open outbound port for traffic to leave the instance.
+
+### With security groups everything is blocked by default. so you can only use allow rules
+
+### With NACLs groups everything is allowed by default. so you can only use both allow and deny rules
+
+#### NACLs are more like added security.
+
+--- ##########
+
+## Hybrid Connectivity with AWS
+
+some components are in AWS and some are hosted on-premises data center
+For hosting resources in AWS,
+you would use a VPC.
+
+### How to connect remote data center to AWS?
+
+1. AWS VPN
+   1. site-to-site VPN
+   2. client VPN
+2. AWS direct connect
+
+##
+
+## Storage
+
+Two main storage type:
+
+1. Block storage:
+2. Object storage
+
+#### Assume you have 1gb file with text in it. In block storage this file will split into fixed size chunks of data and then stored. On the other hand, object storage treats each file as a single unit of data.
+
+## Assume you want to change 1 character in that 1gb file. In block storage, its simple. Mainly because we change the block or piece of file where that character resides and leave rest of file alone. but in Object storage, i gave to update whole file.
+
+---
+
+### Block Storage:
+
+File Splitting: Block storage breaks down the file into fixed-size blocks (e.g., 4KB, 8KB). These blocks are addressed and stored independently.
+Updating a Character: Modifying a single character only affects the specific block containing that character. The remaining blocks remain unchanged. This is efficient for updates that target specific parts of a large file.
+
+### Object Storage:
+
+Single Unit: Object storage treats the entire 1GB file as a single, unchangeable unit. It doesn't subdivide the file into smaller parts.
+Updating a Character: To modify a character, object storage downloads the entire 1GB file, makes the change to the specific character, and then uploads the entire modified file back to storage. This can be less efficient for small character changes within large files.

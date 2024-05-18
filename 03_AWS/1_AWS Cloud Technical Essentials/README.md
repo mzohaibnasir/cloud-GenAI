@@ -632,4 +632,59 @@ Remember, the best storage option depends on your specific requirements and prio
 
 ---
 
-## You back up EBS volumes using snapshots
+### You back up EBS volumes using snapshots
+
+### EBS needs EC2 but s3 doesn't need compute.
+
+---
+
+### s3
+
+Amazon S3 (Simple Storage Service) is an object storage service offered by AWS (Amazon Web Services). It's a highly scalable and cost-effective storage solution for a variety of data needs. Here are some key concepts to understand S3 buckets:
+
+**Buckets:**
+
+- Think of buckets as containers within S3 that hold your objects (files). Each bucket has a unique name across the entire AWS platform.
+- Bucket Naming Rules:
+  - Must be unique within AWS.
+  - Can contain lowercase letters, numbers, periods (.), and hyphens (-).
+  - Must start with a letter or number and be between 3 and 63 characters long.
+
+**Objects:**
+
+- Objects are the actual files you store within a bucket. Each object has a unique key (name) within the bucket and the data itself.
+- Keys can have a hierarchical structure using forward slashes (/) to resemble folders.
+
+**Access Control:**
+
+- You can control access to your buckets and objects using S3 Bucket ACLs (Access Control Lists) and IAM policies.
+  - S3 Bucket ACLs: Grant permissions (read, write, list, etc.) at the bucket and object level to specific users or groups (e.g., Owner, AuthenticatedUsers). By default, S3 buckets can be public or private.
+  - IAM policies: Offer more granular and secure control over access to S3 buckets and objects.
+
+**Object Lifecycle Management:**
+
+- S3 allows you to define lifecycle rules to automate actions on your objects based on specific criteria like time or storage class.
+  - This can help manage costs by automatically transitioning objects to cheaper storage classes or deleting them after a set period.
+
+**Versions and Deletion:**
+
+- S3 keeps different versions of your objects by default, allowing you to revert to previous versions if needed.
+- Deletion in S3 isn't instantaneous. Objects are marked for deletion but might not be permanently removed immediately. You can use S3 Glacier for long-term archiving with retrieval options.
+
+**Common Use Cases:**
+
+- Static website hosting
+- Media storage (images, videos, audio)
+- Backups and archiving
+- Data lakes for analytics
+- Distributing large files
+
+**Benefits of S3 Buckets:**
+
+- **Scalability:** Easily store vast amounts of data without worrying about capacity limitations.
+- **Durability:** S3 offers high durability with built-in redundancy to protect against data loss.
+- **Cost-effectiveness:** S3 provides various storage classes to optimize costs based on your access needs.
+- **Security:** You can control access to your buckets and objects using S3 Bucket ACLs and IAM policies.
+- **Simplicity:** S3 offers a simple and intuitive interface for managing your data.
+
+By understanding these concepts, you can effectively leverage S3 buckets for various storage needs within your AWS environment.

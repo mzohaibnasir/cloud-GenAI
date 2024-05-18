@@ -874,6 +874,8 @@ To replicate a bit of isolation, we can create hierarchy like using "/" in filen
 
 Amazon RDS enables you to create and manage relational databases in the cloud without the operational burden of traditional database management. For example, if you sell healthcare equipment and your goal is to be the number-one seller in the Pacific Northwest, building out a database doesn’t directly help you achieve that goal though having a database is necessary to achieve the goal. Amazon RDS helps you offload some of this unrelated work of creating and managing a database. You can focus on the tasks that differentiate your application, instead of infrastructure-related tasks such as provisioning, patching, scaling, and restoring. Amazon RDS supports most of the popular relational database management systems, ranging from commercial options, open source options, and even an AWS-specific option. Here are the supported Amazon RDS engines.
 
+### Amazon DynamoDB
+
 Amazon DynamoDB is a fast, highly scalable NoSQL database service offered by AWS. It's a popular choice for building modern applications that require high performance, flexibility, and global reach. Here's a breakdown of key concepts to help you understand DynamoDB:
 
 **Key Concepts:**
@@ -911,3 +913,5 @@ Amazon DynamoDB is a fast, highly scalable NoSQL database service offered by AWS
 - **AWS CLI:** Command-line interface for managing DynamoDB from your terminal.
 
 By understanding these core concepts and benefits, you can explore how DynamoDB can power your applications with high performance, scalability, and flexibility within the AWS cloud.
+
+---

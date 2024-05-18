@@ -547,10 +547,14 @@ Two main storage type:
 
 ---
 
-### Block Storage:(Amazon Elastic Block Storage)
+### Block Storage:(Amazon Elastic Block Storage _&_ eC2 instancestore)
 
 File Splitting: Block storage breaks down the file into fixed-size blocks (e.g., 4KB, 8KB). These blocks are addressed and stored independently.
 Updating a Character: Modifying a single character only affects the specific block containing that character. The remaining blocks remain unchanged. This is efficient for updates that target specific parts of a large file.
+
+#### Amazon Elastic Block Storage: persistent
+
+#### EC2 instance store: not
 
 ### Object Storage(Amazon s3):
 
@@ -627,3 +631,5 @@ Here's a quick guideline to help you select the most suitable storage option:
 Remember, the best storage option depends on your specific requirements and priorities. Consider factors like performance, scalability, cost, and access patterns when making your decision.
 
 ---
+
+## You back up EBS volumes using snapshots

@@ -519,7 +519,7 @@ By understanding these differences, you can effectively configure security group
 
 --- ##########
 
-## Hybrid Connectivity with AWS
+### Hybrid Connectivity with AWS
 
 some components are in AWS and some are hosted on-premises data center
 For hosting resources in AWS,
@@ -534,7 +534,7 @@ you would use a VPC.
 
 ##
 
-## Storage
+# Storage
 
 Two main storage type:
 
@@ -547,7 +547,7 @@ Two main storage type:
 
 ---
 
-### Block Storage:(Amazon Elastic Block Storage _&_ eC2 instancestore)
+## Block Storage:(Amazon Elastic Block Storage _&_ eC2 instancestore)
 
 File Splitting: Block storage breaks down the file into fixed-size blocks (e.g., 4KB, 8KB). These blocks are addressed and stored independently.
 Updating a Character: Modifying a single character only affects the specific block containing that character. The remaining blocks remain unchanged. This is efficient for updates that target specific parts of a large file.
@@ -556,7 +556,7 @@ Updating a Character: Modifying a single character only affects the specific blo
 
 #### EC2 instance store: not
 
-### Object Storage(Amazon s3):
+## Object Storage(Amazon s3):
 
 Single Unit: Object storage treats the entire 1GB file as a single, unchangeable unit. It doesn't subdivide the file into smaller parts.
 Updating a Character: To modify a character, object storage downloads the entire 1GB file, makes the change to the specific character, and then uploads the entire modified file back to storage. This can be less efficient for small character changes within large files.
@@ -638,7 +638,7 @@ Remember, the best storage option depends on your specific requirements and prio
 
 ---
 
-### s3
+## s3
 
 Amazon S3 (Simple Storage Service) is an object storage service offered by AWS (Amazon Web Services). It's a highly scalable and cost-effective storage solution for a variety of data needs. Here are some key concepts to understand S3 buckets:
 
@@ -691,7 +691,7 @@ By understanding these concepts, you can effectively leverage S3 buckets for var
 
 ---
 
-### S3 bucket policy
+## S3 bucket policy
 
 WHAT IS AMAZON S3?
 
@@ -860,6 +860,10 @@ Periodic logs: If you upload periodic logs to a bucket, your application might n
 
 Data that changes in access frequency: Some documents are frequently accessed for a limited period of time. After that, they are infrequently accessed. At some point, you might not need real-time access to them, but your organization or regulations might require you to archive them for a specific period. After that, you can delete them.
 
+---
+
 ## S3 doesn't have file structure. its flat but EFS has.
 
 ---
+
+# Database in AWS

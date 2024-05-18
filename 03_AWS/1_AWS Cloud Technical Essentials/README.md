@@ -861,3 +861,5 @@ Periodic logs: If you upload periodic logs to a bucket, your application might n
 Data that changes in access frequency: Some documents are frequently accessed for a limited period of time. After that, they are infrequently accessed. At some point, you might not need real-time access to them, but your organization or regulations might require you to archive them for a specific period. After that, you can delete them.
 
 ## S3 doesn't have file structure. its flat but EFS has.
+
+---

@@ -547,12 +547,12 @@ Two main storage type:
 
 ---
 
-### Block Storage:
+### Block Storage:(Amazon Elastic Block Storage)
 
 File Splitting: Block storage breaks down the file into fixed-size blocks (e.g., 4KB, 8KB). These blocks are addressed and stored independently.
 Updating a Character: Modifying a single character only affects the specific block containing that character. The remaining blocks remain unchanged. This is efficient for updates that target specific parts of a large file.
 
-### Object Storage:
+### Object Storage(Amazon s3):
 
 Single Unit: Object storage treats the entire 1GB file as a single, unchangeable unit. It doesn't subdivide the file into smaller parts.
 Updating a Character: To modify a character, object storage downloads the entire 1GB file, makes the change to the specific character, and then uploads the entire modified file back to storage. This can be less efficient for small character changes within large files.
@@ -625,3 +625,5 @@ Here's a quick guideline to help you select the most suitable storage option:
 - **For sharing files across EC2 instances and needing a file system interface:** File storage (EFS)
 
 Remember, the best storage option depends on your specific requirements and priorities. Consider factors like performance, scalability, cost, and access patterns when making your decision.
+
+---

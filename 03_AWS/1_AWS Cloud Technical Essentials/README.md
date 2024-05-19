@@ -967,4 +967,104 @@ CloudWatch is a powerful monitoring service offered by AWS that provides compreh
 
 By effectively utilizing CloudWatch, you can gain valuable insights into your AWS environment, ensure the smooth operation of your applications, and optimize your cloud resources for cost and performance.
 
----
+Break Down Metrics
+Each metric in CloudWatch has a timestamp and is organized into containers called namespaces. Metrics in different namespaces are isolated from each other—you can think of them as belonging to different categories.
+
+AWS services that send data to CloudWatch attach dimensions to each metric. A dimension is a name/value pair that is part of the metric’s identity. You can use dimensions to filter the results that CloudWatch returns. For example, you can get statistics for a specific EC2 instance by specifying the InstanceId dimension when you search.
+
+Set Up Custom Metrics
+Let’s say for your application you wanted to record the number of page views your website gets. How would you record this metric to CloudWatch? It’s an application-level metric, meaning that it’s not something the EC2 instance would post to CloudWatch by default. This is where custom metrics come in. Custom metrics allows you to publish your own metrics to CloudWatch.
+
+If you want to gain more granular visibility, you can use high-resolution custom metrics, which enable you to collect custom metrics down to a 1-second resolution. This means you can send one data point per second per custom metric. Other examples of custom metrics are:
+
+Web page load times
+
+Request error rates
+
+Number of processes or threads on your instance
+
+Amount of work performed by your application
+
+Note: You can get started with custom metrics by programmatically sending the metric to CloudWatch using the PutMetricData API.
+
+Get to Know CloudWatch Logs
+CloudWatch can also be the centralized place for logs to be stored and analyzed, using CloudWatch Logs. CloudWatch Logs can monitor, store, and access your log files from applications running on Amazon EC2 instances, AWS Lambda functions, and other sources.
+
+CloudWatch Logs allows you to query and filter your log data. For example, let’s say you’re looking into an application logic error for your application, and you know that when this error occurs it will log the stack trace. Since you know it logs the error, you query your logs in CloudWatch Logs to find the stack trace. You also set up metric filters on logs, which turn log data into numerical CloudWatch metrics that you graph and use on your dashboards.
+
+Some services are set up to send log data to CloudWatch Logs with minimal effort, like AWS Lambda. With AWS Lambda, all you need to do is give the Lambda function the correct IAM permissions to post logs to CloudWatch Logs. Other services require more configuration. For example, if you want to send your application logs from an EC2 instance into CloudWatch Logs, you need to first install and configure the CloudWatch Logs agent on the EC2 instance.
+
+The CloudWatch Logs agent enables Amazon EC2 instances to automatically send log data to CloudWatch Logs. The agent includes the following components.
+
+A plug-in to the AWS Command Line Interface (CLI) that pushes log data to CloudWatch Logs.
+
+A script that initiates the process to push data to CloudWatch Logs.
+
+A cron job that ensures the daemon is always running.
+
+After the agent is installed and configured, you can then view your application logs in CloudWatch Logs.
+
+Learn the CloudWatch Logs Terminology
+Log data sent to CloudWatch Logs can come from different sources, so it’s important you understand how they’re organized and the terminology used to describe your logs.
+
+Log event: A log event is a record of activity recorded by the application or resource being monitored, and it has a timestamp and an event message.
+
+Log stream: Log events are then grouped into log streams, which are sequences of log events that all belong to the same resource being monitored. For example, logs for an EC2 instance are grouped together into a log stream that you can then filter or query for insights.
+
+Log groups: Log streams are then organized into log groups. A log group is composed of log streams that all share the same retention and permissions settings. For example, if you have multiple EC2 instances hosting your application and you are sending application log data to CloudWatch Logs, you can group the log streams from each instance into one log group. This helps keep your logs organized.
+
+### An alarm has three possible states.
+
+1. OK: The metric is within the defined threshold. Everything appears to be operating like normal.
+2. ALARM: The metric is outside of the defined threshold. This could be an operational issue.
+3. INSUFFICIENT_DATA: The alarm has just started, the metric is not available, or not enough data is available for the metric to determine the alarm state.
+
+# Optimizing Solutions on AWS
+
+## What Is Availability?
+
+The availability of a system is typically expressed as a percentage of uptime in a given year or as a number of nines. Below, you can see a list of the percentages of availability based on the downtime per year, as well as its notation in nines.
+
+The information you provided about availability is absolutely correct! Here's a breakdown of the key points:
+
+**Availability:**
+
+- Refers to the degree to which a system, application, or service is **operational and accessible to users when needed**.
+- Measured as a percentage of uptime within a specific timeframe, often a year.
+
+**Nines Notation:**
+
+- A shorthand way to express availability using the number of "9"s in the uptime percentage.
+- **Higher nines** indicate **greater** availability.
+
+**The Table:**
+
+The table you provided accurately shows the relationship between availability percentage, downtime per year, and nines notation. Here's a revised version for clarity:
+
+| Availability (%) | Downtime (per year)     | Nines Notation                |
+| ---------------- | ----------------------- | ----------------------------- | ------------------- |
+| 90%              | 36.53 days(365\*0.10)   | One Nine (1N)                 |
+| 99%              | 3.65 days(365\*0.01)    | Two Nines (2N)                |
+| 99.9%            | 8.76 hours (365\*0.001) | Three Nines (3N)              |
+| 99.95%           | 4.38 hours              | Three and a Half Nines (3.5N) | (Not commonly used) |
+| 99.99%           | 52.56 minutes           | Four Nines (4N)               |
+| 99.995%          | 26.28 minutes           | Four and a Half Nines (4.5N)  | (Not commonly used) |
+| 99.999%          | 5.256 minutes           | Five Nines (5N)               |
+
+**Choosing the Right Availability Target:**
+
+The ideal availability target depends on the system's criticality:
+
+- **Mission-critical systems:** Aim for Four Nines (4N) or higher to minimize disruptions.
+- **Business-critical applications:** Three Nines (3N) is a common target for essential business operations.
+- **Less critical systems:** Two Nines (2N) might be acceptable for non-critical applications.
+
+**Importance of Availability:**
+
+Understanding availability is crucial for:
+
+- **Setting expectations:** Define uptime targets for your systems based on their importance.
+- **Measuring performance:** Track how well your systems meet the desired availability levels.
+- **Improving reliability:** Implement strategies to minimize downtime and ensure accessibility.
+
+By effectively managing availability, you can create a more reliable IT environment for users and your business operations.

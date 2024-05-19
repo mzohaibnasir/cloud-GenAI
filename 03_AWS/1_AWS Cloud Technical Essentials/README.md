@@ -1151,3 +1151,64 @@ You're absolutely right! You've accurately described the three main components o
 - The ELB routes the request to a healthy target instance within the chosen target group.
 
 By understanding these components and their interactions, you can effectively configure your ELB to achieve high availability, scalability, and performance for your applications in the AWS cloud.
+
+### NETWORK LOAD BALANCER(elb type)
+
+Yes, NLB (Network Load Balancer) is a type of ELB (Elastic Load Balancer) ¹. ELB is a fully managed load balancing service, which supports NLB, ALB (Application Load Balancer), GLB (Gateway Load Balancer) and Classic Load Balancer ². Here are some key differences between NLB and ALB ³:
+
+1. Load Balancer type: NLB is a Layer 4 load balancer, while ALB is a Layer 7 load balancer.
+2. Target type: NLB can work with IP, instance, and ALB target types, while ALB works with IP, instance, and AWS Lambda target types.
+3. Proxy behavior: NLB terminates the client connection and makes a new one on behalf of the client, while ALB terminates the client connection and then establishes a new connection, acting as a proxy.
+4. Protocols: NLB supports TCP, UDP, and TLS protocols, while ALB supports HTTP, HTTPS, and gRPC protocols.
+
+Here are some primary features of Network Load Balancer (NLB).Network Load Balancer supports TCP, UDP, and TLS protocols. HTTPS uses TCP and TLS as protocol. However, NLB operates at the connection layer, so it doesn’t understand what a HTTPS request is. That means all features discussed above that are required to understand the HTTP and HTTPS protocol, like routing rules based on that protocol, authentication, and least outstanding request routing algorithm, are not available with NLB.
+
+NLB uses a flow hash routing algorithm. The algorithm is based on:
+
+1. The protocol
+2. The source IP address and source port
+3. The destination IP address and destination port
+4. The TCP sequence number
+
+If all of these parameters are the same, then the packets are sent to the exact same target. If any of them are different in the next packets, then the request may be sent to a different target.
+
+NLB has sticky sessions. Different from ALB, these sessions are based on the source IP address of the client instead of a cookie.
+
+NLB supports TLS offloading. NLB understands the TLS protocol. It can also offload TLS from the backend servers similar to how ALB works.
+
+NLB handles millions of requests per second. While ALB can also support this number of requests, it needs to scale to reach that number. This takes time. NLB can instantly handle this amount of requests.
+
+NLB supports static and elastic IP addresses. There are some situations where the application client needs to send requests directly to the load balancer IP address instead of using DNS. For example, this is useful if your application can’t use DNS or if the connecting clients require firewall rules based on IP addresses. In this case, NLB is the right type of load balancer to use.
+
+NLP preserves source IP address. NLB preserves the source IP address of the client when sending the traffic to the backend. With ALB, if you look at the source IP address of the requests, you will find the IP address of the load balancer. While with NLB, you would see the real IP address of the client, which is required by the backend application in some cases.
+
+---
+
+You're absolutely right! Your understanding of Elastic Load Balancers (ELB) and its different types is spot on. Here's a breakdown of the key points you mentioned:
+
+**ELB and its Types:**
+
+- **ELB:** A comprehensive AWS service for distributing traffic across multiple targets for increased availability and scalability.
+- **ELB Types:**
+  - **NLB (Network Load Balancer):** Operates at Layer 4 (network layer), ideal for high-performance applications using TCP/UDP protocols.
+  - **ALB (Application Load Balancer):** Operates at Layer 7 (application layer), suited for web applications using HTTP/HTTPS and offering advanced features like path-based routing and security integration.
+  - **GLB (Gateway Load Balancer):** Distributes traffic across VPC endpoints or network gateways within a VPC (Virtual Private Cloud).
+  - **Classic Load Balancer (CLB):** The original ELB type, still supported but recommended for existing deployments only.
+
+**Key Differences Between NLB and ALB:**
+
+| Feature             | NLB (Network Load Balancer)    | ALB (Application Load Balancer) |
+| ------------------- | ------------------------------ | ------------------------------- |
+| Load Balancer Type  | Layer 4                        | Layer 7                         |
+| Target Types        | IP, Instance, ALB Target Group | IP, Instance, Lambda Function   |
+| Proxy Behavior      | Terminates & Re-establishes    | Terminates & Acts as Proxy      |
+| Protocols Supported | TCP, UDP, TLS                  | HTTP, HTTPS, gRPC               |
+
+**Additional Points:**
+
+- Both NLB and ALB support connection draining to ensure existing connections finish before removing a target.
+- NLB excels in raw performance and low latency, while ALB offers more granular control and advanced features for web applications.
+
+**Understanding these distinctions helps you choose the right ELB type for your specific needs.**
+
+---

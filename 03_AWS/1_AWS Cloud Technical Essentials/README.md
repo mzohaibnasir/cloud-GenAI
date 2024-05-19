@@ -876,7 +876,12 @@ Amazon RDS enables you to create and manage relational databases in the cloud wi
 
 ### Amazon DynamoDB
 
-Amazon DynamoDB is a fast, highly scalable NoSQL database service offered by AWS. It's a popular choice for building modern applications that require high performance, flexibility, and global reach. Here's a breakdown of key concepts to help you understand DynamoDB:
+Amazon DynamoDB is a fast,serverless, highly scalable NoSQL database service offered by AWS. It's a popular choice for building modern applications that require high performance, flexibility, and global reach. Here's a breakdown of key concepts to help you understand DynamoDB:
+
+Here you dont create tables like in SQL that relate to eachother but here you create standalone tables.
+A dynamoDB table isjust a place where you stoer and query your data. Data is organized into items and items have attributes.
+
+DynamoDB doesn't require a rigid schema. NoSQl databses have flexible schemas. No data type restrictions.
 
 **Key Concepts:**
 
@@ -915,3 +920,5 @@ Amazon DynamoDB is a fast, highly scalable NoSQL database service offered by AWS
 By understanding these core concepts and benefits, you can explore how DynamoDB can power your applications with high performance, scalability, and flexibility within the AWS cloud.
 
 ---
+
+# Monitoring on AWS

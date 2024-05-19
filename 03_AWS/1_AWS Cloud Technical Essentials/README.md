@@ -1042,13 +1042,13 @@ The information you provided about availability is absolutely correct! Here's a 
 The table you provided accurately shows the relationship between availability percentage, downtime per year, and nines notation. Here's a revised version for clarity:
 
 | Availability (%) | Downtime (per year)     | Nines Notation                |
-| ---------------- | ----------------------- | ----------------------------- | ------------------- |
+| ---------------- | ----------------------- | ----------------------------- |
 | 90%              | 36.53 days(365\*0.10)   | One Nine (1N)                 |
 | 99%              | 3.65 days(365\*0.01)    | Two Nines (2N)                |
 | 99.9%            | 8.76 hours (365\*0.001) | Three Nines (3N)              |
-| 99.95%           | 4.38 hours              | Three and a Half Nines (3.5N) | (Not commonly used) |
+| 99.95%           | 4.38 hours              | Three and a Half Nines (3.5N) |
 | 99.99%           | 52.56 minutes           | Four Nines (4N)               |
-| 99.995%          | 26.28 minutes           | Four and a Half Nines (4.5N)  | (Not commonly used) |
+| 99.995%          | 26.28 minutes           | Four and a Half Nines (4.5N)  |
 | 99.999%          | 5.256 minutes           | Five Nines (5N)               |
 
 **Choosing the Right Availability Target:**

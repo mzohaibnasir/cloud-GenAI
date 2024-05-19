@@ -1038,7 +1038,7 @@ The information you provided about availability is absolutely correct! Here's a 
 - **Higher nines** indicate **greater** availability.
 
 **The Table:**
-xx
+
 The table you provided accurately shows the relationship between availability percentage, downtime per year, and nines notation. Here's a revised version for clarity:
 
 | Availability (%) | Downtime (per year)     | Nines Notation                |
